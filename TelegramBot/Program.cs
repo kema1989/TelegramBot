@@ -1,4 +1,6 @@
 ﻿using System;
+using Telegram.Bot;
+using Telegram.Bot.Args;
 
 namespace TelegramBot
 {
@@ -6,7 +8,22 @@ namespace TelegramBot
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var bot = new BotWorker();
+
+            bot.Initialize();
+            bot.Start();
+
+            Console.WriteLine("Напишите stop для прекращения работы");
+
+            string command;
+            do
+            {
+                command = Console.ReadLine();
+            } while (command != "stop");
+
+            bot.Stop();
         }
+
+        
     }
 }
